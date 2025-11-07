@@ -9,14 +9,13 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-
+app.get("/health", (_req, res) => {
+  res.json({ success: true, message: "Server is running" });
+});
 // Routes
 app.use("/", urlRoute);
 
 // Health check
-app.get("/health", (_req, res) => {
-  res.json({ success: true, message: "Server is running" });
-});
 
 const PORT = process.env.PORT || 5000;
 
